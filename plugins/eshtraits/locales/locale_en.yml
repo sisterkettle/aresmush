@@ -1,0 +1,9 @@
+en:
+  eshtraits:
+    personality_set: "Personality set."
+    personality_cleared: "Personality cleared."
+    advantages_set: "Advantages set."
+    advantages_cleared: "Advantages cleared."
+    personality_title: "Personality"
+    advantages_title: "Advantages"
+    special_title: "Special"
