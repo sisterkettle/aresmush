@@ -5,6 +5,7 @@ idle:
   - builder
   - coder
   - guest
+  - idle_exempt
   monthly_reminder_cron:
     hour:
     - 15
@@ -33,20 +34,34 @@ idle:
     profile page for any notes left by the prior player.  Type %xhonstage%xn to go
     forth and RP.
   roster_app_template: |-
-    Tell us why you want to play this character:
+    Please answer the following FIVE questions:
 
 
-    If you're submitting this from an existing character, check your messages to follow up. Otherwise, provide an email where we can get back to you:
+    **Tell us why you're picking this particular character?** (answer)
+
+
+    **Is there anything about the background that you have questions about?**
+    (answer)
+
+
+    **Have you read our policies, timeline, and other important pages?** (answer)
+
+
+    **How did you hear about our game?** (answer)
+
+
+    **Please provide an email or discord info where you can be reached. Thank
+    you!** (answer)
   roster_app_category: APP
-  restrict_roster: false
+  restrict_roster: true
   roster_fields:
   - field: name
     width: 20
     title: Name
   - field: demographic
     width: 10
-    title: Gender
-    value: gender
+    title: Alias
+    value: alias
   - field: group
     width: 17
     title: Faction
