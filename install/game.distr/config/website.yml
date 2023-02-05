@@ -28,155 +28,140 @@ website:
   top_navbar:
   - title: Play
     menu:
-    - title: Available Characters
-      route: roster
-    - divider: true
-    - title: Play
-      route: play
-    - title: Active Scenes
-      route: scenes-live
-    - title: Unshared Scenes
-      route: scene-unshared
-    - title: Start New Scene
-      route: scene-create
-    - divider: true
-    - title: Who's Online
-      route: who
-    - title: Forum
-      route: forum
-    - title: Mail
-      route: mail
-    - title: Events
-      route: events
-    - divider: true
-    - title: Web Client
-      route: client
+      - title: Available Characters
+        route: roster
+      - divider: true
+      - title: Play
+        route: play
+      - title: Active Scenes
+        route: scenes-live
+      - title: Unshared Scenes
+        route: scenes-unshared
+      - title: Start New Scene
+        route: scene-create
+      - divider: true
+      - title: Who's Online
+        route: who
+      - title: Forum
+        route: forum
+      - title: Mail
+        route: mail
+      - title: Events
+        route: events
+      - divider: true
+      - title: Web Client
+        route: client
   - title: Directory
     menu:
-    - title: Characters
-      route: characters
-    - title: Roster
-      route: roster
-    - title: Scenes
-      route: scenes
-    - title: Plots
-      route: plots
-    - divider: true
-    - title: Players
-      route: players
-    - title: Game Admin
-      route: admins
-    - title: Census
-      route: census    
-    - title: Locations
-      route: locations
-    - divider: true
-    - title: Files
-      route: files
+      - title: Characters
+        route: characters
+      - title: Roster
+        route: roster
+      - title: Scenes
+        route: scenes
+      - title: Plots
+        route: plots
+      - divider: true
+      - title: Players
+        route: players
+      - title: Game Admin
+        route: admins
+      - title: Census
+        route: census
+      - title: Locations
+        route: locations
+      - divider: true
+      - title: Files
+        route: files
   - title: Theme
     menu:
-    - title: Overview
-      route: wiki
-    - divider: true
-    - title: Timeline
-      route: wiki-page
-      id: timeline
-    - title: FAQ
-      route: wiki-page
-      id: faq
-    - title: Power Classes
-      route: wiki-page
-      id: power_classes
-    - title: Sorcery
-      route: wiki-page
-      id: sorcery
-    - divider: true
-    - title: Plots
-      route: wiki-page
-      id: plots
-    - title: Storytelling
-      route: wiki-page
-      id: storytelling
-    - title: Plot Descriptions
-      route: wiki-page
-      id: plot_description
-    - divider: true
-    - title: Credits
-      route: wiki-page
-      id: credits
+      - title: Overview
+        route: wiki
+      - divider: true
+      - title: Timeline
+        route: wiki-page
+        id: timeline
+      - title: FAQ
+        route: wiki-page
+        id: faq
+      - title: Power Classes
+        route: wiki-page
+        id: power_classes
+      - title: Sorcery
+        route: wiki-page
+        id: sorcery
+      - divider: true
+      - title: Plots
+        route: wiki-page
+        id: plots
+      - title: Storytelling
+        route: wiki-page
+        id: storytelling
+      - title: Plot Descriptions
+        route: wiki-page
+        id: plot_description
+      - divider: true
+      - title: Credits
+        route: wiki-page
+        id: credits
   - title: Help
     menu:
-    - title: Requests
-      route: jobs
-    - title: Account
-      route: account
-    - divider: true
-    - title: Create New Page
-      route: wiki-create
-    - title: Recent Changes
-      route: recent-changes
-    - id: markdown
-      title: Editing Help
-      route: help-topic
-    - divider: true
-    - title: All Pages
-      route: wiki-all
-    - title: Files
-      route: files
-    - title: Tags
-      route: wiki-tags
-    - title: Wiki Archive
-      route: wiki-archive
-    - divider: true
-    - title: Game Help
-      route: help
-    - id: markdown
-      title: Markdown Reference
-      route: help-topic
-    - title: Emoji Reference
-      route: emoji
-    - title: Terms of Service
-      route: tos
-    - divider: true
-    - target: blank
-      title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
-      url: 'https://aresmush.com/mush-101/'    
+      - title: Requests
+        route: jobs
+      - title: Account
+        route: account
+      - divider: true
+      - title: Create New Page
+        route: wiki-create
+      - title: Recent Changes
+        route: recent-changes
+        id: markdown
+      - title: Editing Help
+        route: help-topic
+      - divider: true
+      - title: All Pages
+        route: wiki-all
+      - title: Files
+        route: files
+      - title: Tags
+        route: wiki-tags
+      - title: Wiki Archive
+        route: wiki-archive
+      - divider: true
+      - title: Game Help
+        route: help
+        id: markdown
+      - title: Markdown Reference
+        route: help-topic
+      - title: Emoji Reference
+        route: emoji
+      - title: Terms of Service
+        route: tos
+      - divider: true
+      - target: blank
+        title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
+        url: 'https://aresmush.com/mush-101/'
   - title: Search
     menu:
-    - title: Wiki Search
-      route: search-wiki
-    - title: Help Search
-      route: search-help
-    - title: Chatacter Search
-      route: search-chars
-    - title: Location Search
-      route: search-locations
-    - title: Scene Search
-      route: search-scenes
-    - title: Forum Search
-      route: search-forum
-    - title: Request Search
-      route: search-jobs    
-    - title: Skill Scan
-      route: fs3skills-scan
-    - title: Roles
-      route: roles
-    - divider: true
-    - target: blank
-      title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
-      url: https://aresmush.com/fs3/fs3-3
-    - target: blank
-      title: FS3 Combat Quick Reference <i class="fa fa-external-link-alt" aria-hidden="true">
-      url: https://aresmush.com/fs3/fs3-3/combat-quickref.html
-    - target: blank
-      title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt"
-        aria-hidden="true">
-      url: https://aresmush.com/fs3/fs3-3/combat-walkthrough.html  
+      - title: Wiki Search
+        route: search-wiki
+      - title: Help Search
+        route: search-help
+      - title: Chatacter Search
+        route: search-chars
+      - title: Location Search
+        route: search-locations
+      - title: Scene Search
+        route: search-scenes
+      - title: Forum Search
+        route: search-forum
+      - title: Request Search
+        route: search-jobs  
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
   permissions:
-    manage_theme: Edit web portal CSS, colors, and theme images.
+    manage_theme: Edit web portal CSS and colors.
     manage_wiki: Create and delete restricted wiki pages.
   uploadable_extensions:
   - ".jpg"
