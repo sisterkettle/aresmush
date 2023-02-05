@@ -8,13 +8,18 @@ website:
       type: portal
       message: Edited a wiki page.
   allow_html_in_markdown: true
-  character_gallery_group: Faction
-  character_gallery_subgroup: Position
+  character_gallery_group: Team
+  character_gallery_subgroup: Team
   left_sidebar: false
   max_folder_size_kb: 2000
   max_upload_size_kb: 300
   restricted_pages:
   - home
+  - plots
+  - faq
+  - credits
+  - sorcery
+  - power_classes
   sitemap_update_cron:
     hour:
     - 2
@@ -23,15 +28,15 @@ website:
   top_navbar:
   - title: Play
     menu:
-    - title: Create a Character
-      route: chargen
-    - title: Pre-Made Characters
+    - title: Available Characters
       route: roster
     - divider: true
     - title: Play
       route: play
     - title: Active Scenes
       route: scenes-live
+    - title: Unshared Scenes
+      route: scene-unshared
     - title: Start New Scene
       route: scene-create
     - divider: true
@@ -50,6 +55,8 @@ website:
     menu:
     - title: Characters
       route: characters
+    - title: Roster
+      route: roster
     - title: Scenes
       route: scenes
     - title: Plots
@@ -60,30 +67,96 @@ website:
     - title: Game Admin
       route: admins
     - title: Census
-      route: census
-    - title: Roster
-      route: roster
+      route: census    
     - title: Locations
       route: locations
-    - title: Combats
-      route: combats
     - divider: true
     - title: Files
       route: files
-  - title: System
+  - title: Theme
     menu:
-    - title: Abilities List
-      route: fs3skills-abilities
-    - title: Gear List
-      route: fs3combat-gear
-    - title: Groups List
-      route: groups
-    - title: Achievements
-      route: achievements
-    - title: Skill Limits
-      route: fs3-limits
-    - title: XP Costs
-      route: fs3-xp-costs
+    - title: Overview
+      route: wiki
+    - divider: true
+    - title: Timeline
+      route: wiki-page
+      id: timeline
+    - title: FAQ
+      route: wiki-page
+      id: faq
+    - title: Power Classes
+      route: wiki-page
+      id: power_classes
+    - title: Sorcery
+      route: wiki-page
+      id: sorcery
+    - divider: true
+    - title: Plots
+      route: wiki-page
+      id: plots
+    - title: Storytelling
+      route: wiki-page
+      id: storytelling
+    - title: Plot Descriptions
+      route: wiki-page
+      id: plot_description
+    - divider: true
+    - title: Credits
+      route: wiki-page
+      id: credits
+  - title: Help
+    menu:
+    - title: Requests
+      route: jobs
+    - title: Account
+      route: account
+    - divider: true
+    - title: Create New Page
+      route: wiki-create
+    - title: Recent Changes
+      route: recent-changes
+    - id: markdown
+      title: Editing Help
+      route: help-topic
+    - divider: true
+    - title: All Pages
+      route: wiki-all
+    - title: Files
+      route: files
+    - title: Tags
+      route: wiki-tags
+    - title: Wiki Archive
+      route: wiki-archive
+    - divider: true
+    - title: Game Help
+      route: help
+    - id: markdown
+      title: Markdown Reference
+      route: help-topic
+    - title: Emoji Reference
+      route: emoji
+    - title: Terms of Service
+      route: tos
+    - divider: true
+    - target: blank
+      title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: 'https://aresmush.com/mush-101/'    
+  - title: Search
+    menu:
+    - title: Wiki Search
+      route: search-wiki
+    - title: Help Search
+      route: search-help
+    - title: Chatacter Search
+      route: search-chars
+    - title: Location Search
+      route: search-locations
+    - title: Scene Search
+      route: search-scenes
+    - title: Forum Search
+      route: search-forum
+    - title: Request Search
+      route: search-jobs    
     - title: Skill Scan
       route: fs3skills-scan
     - title: Roles
@@ -98,58 +171,13 @@ website:
     - target: blank
       title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt"
         aria-hidden="true">
-      url: https://aresmush.com/fs3/fs3-3/combat-walkthrough.html
-  - title: Wiki
-    menu:
-    - title: Home
-      route: wiki
-    - divider: true
-    - title: Create New Page
-      route: wiki-create
-    - title: All Pages
-      route: wiki-all
-    - title: Search Wiki
-      route: search-wiki
-    - title: Tags
-      route: wiki-tags
-    - title: Recent Changes
-      route: recent-changes
-    - divider: true
-    - title: Files
-      route: files
-    - id: markdown
-      title: Editing Help
-      route: help-topic
-    - title: Wiki Archive
-      route: wiki-archive
-  - title: Help
-    menu:
-    - title: Requests
-      route: jobs
-    - title: Account
-      route: account
-    - divider: true
-    - title: Game Help
-      route: help
-    - title: Search
-      route: search-wiki
-    - id: markdown
-      title: Markdown Reference
-      route: help-topic
-    - title: Emoji Reference
-      route: emoji
-    - title: Terms of Service
-      route: tos
-    - divider: true
-    - target: blank
-      title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
-      url: https://aresmush.com/mush-101/
+      url: https://aresmush.com/fs3/fs3-3/combat-walkthrough.html  
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
   permissions:
     manage_theme: Edit web portal CSS, colors, and theme images.
-    manage_wiki: Create and delete restricted wiki pages and override folder and file upload limits.
+    manage_wiki: Create and delete restricted wiki pages.
   uploadable_extensions:
   - ".jpg"
   - ".png"
@@ -157,10 +185,8 @@ website:
   - ".jpeg"
   auto_wiki_export: true
   wiki_export_cron:
-    day_of_week:
-    - Tue
     hour:
-    - 4
+    - 3
     minute:
     - 37
   shortcuts:
