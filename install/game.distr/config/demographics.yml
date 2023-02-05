@@ -61,25 +61,25 @@ demographics:
         X-Men: A civilian team funded by their founder.
         Defenders: A civilian team funded by various benefactors.
         Independents: Not a team at all.
-        S.H.I.E.L.D.: A government funded military group.
-        Exiles: 'A group of Exiles, of course!'
+        S.H.I.E.L.D: A government funded military group.
+        Exiles: A group of Exiles, of course!
         Runaways: A group that consists of Runaways!
         Excalibur: A group of mutants dealing with mystic things.
         Heroes-4-Hire: A group of mercenaries doing paid shit.
     Faction:
-      wiki: ''
       desc: Where is your character affiliated?
+      wiki: ''
       values:
         Government: Funded by the government.
-        Civilian: Not funded by the government or a private
+        Civilian: Not funded by the government or private sector.
         Private Sector: Funded by the private sector.
     Identity:
-      desc: Are you known by the general public?
       wiki: ''
+      desc: Are you known by the general public?
       values:
         Secret: Not known to the general public.
         Public: Known to the general public.
-        Registered: Registered to the government.        
+        Registered: Registered to the government.
     Position:
       desc: Job.
       wiki: ''
@@ -87,17 +87,17 @@ demographics:
         Commander: Mostly for NPC use.
         Captain: Captain of a team.
         Lieutenant: Second in command.
-        Team Member: Any other position.        
+        Team Member: Any other position.
   help_text:
-    played by: '%xcplayedby <actor>%xn - Your ''dream casting'' for your character.'
-    physique: '%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc.'
-    gender: '%xcgender <male/female/other>%xn'
-    hair: '%xchair <hair color>%xn'
-    eyes: '%xceyes <eye color>%xn'
-    skin: '%xcskin <complexion>%xn'
-    apparent age: '%xcage <years>%xn'
-    alias: '%xcalias <alias>%xn - Humans may leave blank or enter a nickname.'
-    full name: '%xcfullname <name>%xn - Your character''s full name.'
+    played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
+    physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
+    gender: "%xcgender <male/female/other>%xn"
+    hair: "%xchair <hair color>%xn"
+    eyes: "%xceyes <eye color>%xn"
+    skin: "%xcskin <complexion>%xn"
+    apparent age: "%xcage <years>%xn"
+    alias: "%xcalias <alias>%xn - Humans may leave blank or enter a nickname."
+    full name: "%xcfullname <name>%xn - Your character's full name."
   max_age: 65
   min_age: 18
   nickname_field: ''
