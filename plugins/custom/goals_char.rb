@@ -1,5 +1,5 @@
 module AresMUSH
-    class Character
-        attribute :goals
-    end
+  class Character
+    attribute :goals
+  end
 end
