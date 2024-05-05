@@ -93,14 +93,26 @@ module AresMUSH
       channel_message = channel.add_to_history "#{title} #{original_msg}", enactor
       channel.characters.each do |c|
         if (!Channels.is_muted?(c, channel))
-          
+          # Set correct name based on whether they want handles showing
+          if (c.channel_handles)
+            name = enactor.ooc_name
+          else
+            name = enactor.name
+          end
+          # Edit message to remove html and send the person the right version of the name
+          if enactor.handle
+            personal_msg = "#{original_msg}".sub("#{enactor.name} <span class='handle'>(@#{enactor.handle.name})</span>", "#{name}")
+          else
+            personal_msg = "#{original_msg}".sub(enactor.name, "#{name}")
+          end
           title_display = (title && Channels.show_titles?(c, channel)) ? "#{title} " : ""
-          formatted_msg = "#{Channels.display_name(c, channel)} #{title_display}#{original_msg}"
+          formatted_msg = "#{Channels.display_name(c, channel)} #{title_display}#{personal_msg}"
           
           Login.emit_if_logged_in(c, formatted_msg)
         end
       end
       
+      # Sadly the web has to show one or the other, so we are sending it handles wrapped so CSS can hide them.
       formatted_msg = "#{title} #{original_msg}"
       
       data = {
@@ -119,7 +131,12 @@ module AresMUSH
     end
     
     def self.pose_to_channel(channel, enactor, msg, title)
-      name = enactor.ooc_name
+      # To make handles on channel messages optional, we check for a handle and wrap it in a span if there.
+      if enactor.handle
+        name = "#{enactor.name} <span class='handle'>(@#{enactor.handle.name})</span>"
+      else
+        name = enactor.name
+      end
       formatted_msg = PoseFormatter.format(name, msg)
       Channels.emit_to_channel channel, formatted_msg, enactor, title
       Channels.notify_discord_webhook(channel, msg, enactor)
@@ -409,3 +426,4 @@ module AresMUSH
           end
         end
       end
+
