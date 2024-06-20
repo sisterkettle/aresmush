@@ -13,7 +13,7 @@ module AresMUSH
       # @example
       #    return { goals: Website.format_markdown_for_html(char.goals) }
       def self.get_fields_for_viewing(char, viewer)
-        return {}
+        return { personality: Website.format_markdown_for_html(char.personality), advantages: Website.format_markdown_for_html(char.advantages) }
       end
     
       # Gets custom fields for the character profile editor.
@@ -26,7 +26,7 @@ module AresMUSH
       # @example
       #    return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_editing(char, viewer)
-        return {}
+        return { personality: Website.format_input_for_html(char.personality), advantages: Website.format_input_for_html(char.advantages) }
       end
 
       # Gets custom fields for character creation (chargen).
@@ -57,6 +57,8 @@ module AresMUSH
       #        char.update(goals: Website.format_input_for_mush(chargen_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_chargen(char, chargen_data)
+        char.update(personality: chargen_data[:custom][:personality])
+        char.update(advantages: chargen_data[:custom][:advantages])
         return []
       end
       
