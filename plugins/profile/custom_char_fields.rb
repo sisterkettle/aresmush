@@ -38,7 +38,7 @@ module AresMUSH
       # @example
       #    return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_chargen(char)
-        return { personality: Website.format_input_for_html(char.personality), advantages: Website.format_input_for_html(char.advantages }
+        return { personality: Website.format_input_for_html(char.personality), advantages: Website.format_input_for_html(char.advantages) }
       end
       
       # Deprecated - use save_fields_from_profile_edit2 instead
