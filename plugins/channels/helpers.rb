@@ -92,27 +92,15 @@ module AresMUSH
       title = title ? "#{title}%xn" : nil
       channel_message = channel.add_to_history "#{title} #{original_msg}", enactor
       channel.characters.each do |c|
-        if (!Channels.is_muted?(c, channel))
-          # Set correct name based on whether they want handles showing
-          if (c.channel_handles)
-            name = enactor.ooc_name
-          else
-            name = enactor.name
-          end
-          # Edit message to remove html and send the person the right version of the name
-          if enactor.handle
-            personal_msg = "#{original_msg}".sub("#{enactor.name} <span class='handle'>(@#{enactor.handle.name})</span>", "#{name}")
-          else
-            personal_msg = "#{original_msg}".sub(enactor.name, "#{name}")
-          end
+        if (!Channels.is_muted?(c, channel) && !c.has_channel_blocked?(enactor))
+          
           title_display = (title && Channels.show_titles?(c, channel)) ? "#{title} " : ""
-          formatted_msg = "#{Channels.display_name(c, channel)} #{title_display}#{personal_msg}"
+          formatted_msg = "#{Channels.display_name(c, channel)} #{title_display}#{original_msg}"
           
           Login.emit_if_logged_in(c, formatted_msg)
         end
       end
       
-      # Sadly the web has to show one or the other, so we are sending it handles wrapped so CSS can hide them.
       formatted_msg = "#{title} #{original_msg}"
       
       data = {
@@ -126,17 +114,15 @@ module AresMUSH
       }
       
       Global.client_monitor.notify_web_clients(:new_chat, "#{data.to_json}", true) do |char|
-        char && Channels.has_alt_on_channel?(char, channel) && !Channels.is_muted?(char, channel)
+        char && 
+        Channels.has_alt_on_channel?(char, channel) && 
+        !Channels.is_muted?(char, channel) &&
+        !char.has_channel_blocked?(enactor)
       end
     end
     
     def self.pose_to_channel(channel, enactor, msg, title)
-      # To make handles on channel messages optional, we check for a handle and wrap it in a span if there.
-      if enactor.handle
-        name = "#{enactor.name} <span class='handle'>(@#{enactor.handle.name})</span>"
-      else
-        name = enactor.name
-      end
+      name = enactor.ooc_name
       formatted_msg = PoseFormatter.format(name, msg)
       Channels.emit_to_channel channel, formatted_msg, enactor, title
       Channels.notify_discord_webhook(channel, msg, enactor)
@@ -345,8 +331,13 @@ module AresMUSH
             
     def self.notify_discord_webhook(channel, message, enactor)
       debug_enabled = Global.read_config('channels', 'discord_debug')
-
+      name_subs = Global.read_config('channels', 'discord_name_subs') || {}
+      
       name = enactor.ooc_name
+      name_subs.each do |k, v|
+        name = name.gsub(/#{k}/i, v)
+      end
+      
       url = channel.discord_webhook
 
       if (url.blank?)
@@ -390,7 +381,9 @@ module AresMUSH
         if (lazy_load || chars_on_channel.empty?)
           messages = []
         else
-          messages = channel.sorted_channel_messages.map { |m| {
+          messages = channel.sorted_channel_messages
+            .select { |m| !enactor.has_channel_blocked?(m.author) }
+            .map { |m| {
             message: Website.format_markdown_for_html(m.message),
             id: m.id,
             timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
@@ -434,4 +427,3 @@ module AresMUSH
           end
         end
       end
-
