@@ -6,7 +6,7 @@ module AresMUSH
       # Note: Viewer may be nil if someone's looking at the character page without being logged in
       # Example: return { goals: Website.format_markdown_for_html(char.goals) }
       def self.get_fields_for_viewing(char, viewer)
-        return { powers: Website.format_markdown_for_html(char.Advantages), skills: Website.format_markdown_for_html(char.Personality)}
+        return { advantages: Website.format_markdown_for_html(char.Advantages), personality: Website.format_markdown_for_html(char.Personality)}
       end
     
       # Return a hash of custom fields formatted for editing in the profile editor
@@ -18,7 +18,7 @@ module AresMUSH
       # Return a hash of custom fields formatted for editing in chargen
       # Example: return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_chargen(char)
-        return { powers: Website.format_input_for_html(char.Advantages), skills: Website.format_input_for_html(char.Personality)}
+        return { advantages: Website.format_input_for_html(char.Advantages), personality: Website.format_input_for_html(char.Personality)}
       end
       
       # Custom fields will be in char_data[:custom]
@@ -31,8 +31,8 @@ module AresMUSH
       # Note Custom fields will be in chargen_data[:custom]
       # Example: char.update(goals: chargen_data[:custom][:goals])
       def self.save_fields_from_chargen(char, chargen_data)
-        char.update(powers: chargen_data['custom']['Advantages'])
-        char.update(skills: chargen_data['custom']['Personality'])
+        char.update(advantages: chargen_data['custom']['Advantages'])
+        char.update(personality: chargen_data['custom']['Personality'])
         return []
       end
       
