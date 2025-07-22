@@ -23,23 +23,23 @@ module AresMUSH
       # You can also use other built-in chargen status messages, like t('chargen.not_set').  
       # See https://www.aresmush.com/tutorials/config/chargen.html for details.
 
-      personality = char.personality
+      skills = char.Personality
 
-      if (personality.length > 0)
-        personalitysmsg = t('chargen.ok')
+      if (skills.length > 0)
+        skillsmsg = t('chargen.ok')
       else
-        personalitymsg = t('chargen.oops_missing', :missing => "Personality")
+        skillsmsg = t('chargen.oops_missing', :missing => "Personality")
       end
 
-      advantages = char.advantages 
+      advantages = char.Advantages 
 
       if (advantages.length > 0)
         advmsg = t('chargen.ok')
       else
         advmsg = t('chargen.oops_missing', :missing => "Advantages")
       end
-
-      return (Chargen.format_review_status "\nChecking Personality.", personalitymsg) + (Chargen.format_review_status "\nChecking Advantages.", advmsg) 
+      
+      return (Chargen.format_review_status "\nChecking Personality.", powersmsg) + (Chargen.format_review_status "\nChecking Advantages.", skillsmsg)
 
     end
   end
