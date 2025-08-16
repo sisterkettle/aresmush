@@ -18,6 +18,8 @@ module AresMUSH
           timezones: timezones,
           unified_play_screen: enactor.unified_play_screen,
           channel_handles: enactor.channel_handles
+          editor: enactor.website_editor || "WYSIWYG",
+          editors: [ "Classic", "WYSIWYG" ]
         }
       end
     end
