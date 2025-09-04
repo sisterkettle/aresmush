@@ -35,6 +35,7 @@ module AresMUSH
         char.update(personality: chargen_data['custom']['personality'])
         return []
       end
+      
       # Saves fields from profile editing.
       #
       # @param [Character] char - The character being updated.
@@ -50,6 +51,7 @@ module AresMUSH
         # By default, this calls the old method for backwards compatibility. The old one didn't
         # use enactor. Replace this with your own code.
         return CustomCharFields.save_fields_from_profile_edit(char, char_data)
+      end
       
     end
   end
