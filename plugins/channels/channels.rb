@@ -43,7 +43,7 @@ module AresMUSH
           return ChannelLeaveCmd
         when "list", nil
           return ChannelListCmd
-        when "recall"
+        when "recall", "review"
           return ChannelRecallCmd
         when "removechar"
           return ChannelForceLeaveCmd
@@ -108,6 +108,8 @@ module AresMUSH
         return DownloadChatRequestHandler
       when "editChannel"
         return EditChannelRequestHandler
+      when "flagChatMessage"
+        return FlagChatRequestHandler
       when "joinChannel"
         return JoinChannelRequestHandler
       when "leaveChannel"

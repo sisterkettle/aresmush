@@ -7,6 +7,10 @@ module AresMUSH
     
     before_delete :delete_backup
     
+    def self.retention_hours
+      48
+    end
+    
     def file_path
       File.join(AresMUSH.game_path, self.file)
     end
@@ -20,7 +24,11 @@ module AresMUSH
     end
     
     def delete_backup
-      FileUtils.rm self.file_path
+      begin
+        FileUtils.rm self.file_path
+      rescue Exception => e
+        Global.logger.warn "Couldn't clear wiki backup file: #{self.download_path}"        
+      end
     end
   end
 end
