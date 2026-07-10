@@ -7,7 +7,7 @@ module AresMUSH
       # Example: return { goals: Website.format_markdown_for_html(char.goals) }
       def self.get_fields_for_viewing(char, viewer)
         return {
-          advantages: Website.format_markdown_for_html(char.advantages), personality: Website.format_markdown_for_html(char.personality)
+          advantages: Website.format_markdown_for_html(char.advantages), personality: Website.format_markdown_for_html(char.personality),
           emblem: (Character.derive_emblem(char) || "").gsub(" ","-")
         }
       end
